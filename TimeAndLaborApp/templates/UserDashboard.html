@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <title>Dashboard</title>
+  {% load staticfiles %}
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script>window.jQuery || document.write(decodeURIComponent('%3Cscript src="js/jquery.min.js"%3E%3C/script%3E'))</script>
+  <link rel="stylesheet" type="text/css" href="https://cdn3.devexpress.com/jslib/20.2.4/css/dx.common.css" />
+  <link rel="stylesheet" type="text/css" href="https://cdn3.devexpress.com/jslib/20.2.4/css/dx.light.css" />
+
+  <script src="https://cdn3.devexpress.com/jslib/20.2.4/js/dx.all.js"></script>
+
+  <script src="../static/index.js"></script>
+  <style>
+    ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background-color: #333;
+    }
+
+    li {
+      float: left;
+    }
+
+    li a {
+      display: block;
+      color: white;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+    }
+
+    li a:hover:not(.active) {
+      background-color: #111;
+    }
+
+    .active {
+      background-color: #4CAF50;
+    }
+
+    .Table-Schedule {
+      width: 600px;
+      height: 400px;
+      border-style: double;
+    }
+  </style>
+</head>
+
+<body>
+  <h1> Welcome {{loginUser.fname}}!</h1>
+
+  <ul>
+    <li><a href="/UserDashboard">Home</a></li>
+    <li><a href="/MyBenefits">My Benefits</a></li>
+    <li><a href="/MyReports">Reports</a></li>
+    <li><a href="/SettingsPage">Settings</a></li>
+    <li style="float:right"><a class="active" href="/logout"> Logout here</a></li>
+  </ul>
+
+  <div class="Punch">
+    <p id="demo"></p>
+    <script>
+      var d = new Date();
+      document.getElementById("demo").innerHTML = d;
+    </script>
+  <form action="/clockIn" method="POST">
+    {% csrf_token %}
+    <button name="ClockIn" onclick="myFunction"> Clock-in</button>
+  </form>
+  <form action="/clockOut" method="POST">
+    {% csrf_token %}
+    <button> Clock-out</button>
+  </form>
+  
+  </div>
+  <table border="3" cellpadding="0" cellspacing="0" class="month" width="25%">
+    <tr>
+      <th colspan="7" class="month">{{month}}</th>
+    </tr>
+    <tr>
+      <th class="sun">Sun</th>
+      <th class="mon">Mon</th>
+      <th class="tue">Tue</th>
+      <th class="wed">Wed</th>
+      <th class="thu">Thu</th>
+      <th class="fri">Fri</th>
+      <th class="sat">Sat</th>
+    </tr>
+    <tr>
+      <td class="noday">&nbsp;</td>
+      <td class="noday">&nbsp;</td>
+      <td class="noday">&nbsp;</td>
+      <td class="noday">&nbsp;</td>
+      <td class="noday">&nbsp;</td>
+      <td class="fri">1</td>
+      <td class="sat">2</td>
+    </tr>
+    <tr>
+      <td class="sun">3</td>
+      <td class="mon">4</td>
+      <td class="tue">5</td>
+      <td class="wed">6</td>
+      <td class="thu">7</td>
+      <td class="fri">8</td>
+      <td class="sat">9</td>
+    </tr>
+    <tr>
+      <td class="sun">10</td>
+      <td class="mon">11</td>
+      <td class="tue">12</td>
+      <td class="wed">13</td>
+      <td class="thu">14</td>
+      <td class="fri">15</td>
+      <td class="sat">16</td>
+    </tr>
+    <tr>
+      <td class="sun">17</td>
+      <td class="mon">18</td>
+      <td class="tue">19</td>
+      <td class="wed">20</td>
+      <td class="thu">21</td>
+      <td class="fri">22</td>
+      <td class="sat">23</td>
+    </tr>
+    <tr>
+      <td class="sun">24</td>
+      <td class="mon">25</td>
+      <td class="tue">26</td>
+      <td class="wed">27</td>
+      <td class="thu">28</td>
+      <td class="fri">29</td>
+      <td class="sat">30</td>
+    </tr>
+    <tr>
+      <td class="sun">31</td>
+      <td class="noday">&nbsp;</td>
+      <td class="noday">&nbsp;</td>
+      <td class="noday">&nbsp;</td>
+      <td class="noday">&nbsp;</td>
+      <td class="noday">&nbsp;</td>
+      <td class="noday">&nbsp;</td>
+    </tr>
+  </table>
+  <tr>
+    <th>
+    <td>{{days}}</td>
+    </th>
+  </tr>
+  <tr>
+    <th>
+    <td>{{days2}}</td>
+    </th>
+  </tr>
+  <table border="3" cellpadding="0" cellspacing="0" class="month" width="25%">
+    <tr>
+      <th colspan="7" class="month">{{month}}</th>
+    </tr>
+    <tr>
+      <th class="sun">Sun</th>
+      <th class="mon">Mon</th>
+      <th class="tue">Tue</th>
+      <th class="wed">Wed</th>
+      <th class="thu">Thu</th>
+      <th class="fri">Fri</th>
+      <th class="sat">Sat</th>
+    </tr>
+    <tr>{% for x in days2 %}
+
+      <td>
+        {{days2}}
+      </td>
+      {% endfor %}
+    </tr>
+  </table>
+
+  <body class="dx-viewport">
+    <div class="demo-container">
+      <div class="long-title">
+        <h3>Your weekly schedule</h3>
+      </div>
+      <div id="scheduler"></div>
+    </div>
+  </body>
+
+  <body class="dx-viewport">
+    <div class="demo-container">
+      <!-- <div id="scheduler"> Weekly Schedule</div> -->
+    </div>
+  </body>
+
+</html>

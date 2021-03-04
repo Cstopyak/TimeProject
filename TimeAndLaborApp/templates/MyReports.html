@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <title>My Reports</title>
+  <style>
+    ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background-color: #333;
+    }
+
+    li {
+      float: left;
+    }
+
+    li a {
+      display: block;
+      color: white;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+    }
+
+    li a:hover:not(.active) {
+      background-color: #111;
+    }
+
+    .active {
+      background-color: #4CAF50;
+    }
+
+    .Table-Schedule {
+      width: 600px;
+      height: 400px;
+      border-style: double;
+    }
+  </style>
+</head>
+
+<body>
+  <ul>
+    <li><a href="/UserDashboard">Home</a></li>
+    <li><a href="/MyBenefits">My Benefits</a></li>
+    <li><a href="/MyReports">Reports</a></li>
+    <li><a href="/SettingsPage">Settings</a></li>
+    <li style="float:right"><a class="active" href="/logout"> Logout here</a></li>
+  </ul>
+
+
+  <h1> TimeSheet:</h1>
+  <table class="table table-hover">
+    <tr>
+    <tr>
+      <th>Date</th>
+      <th>Clock-in</th>
+      <th>Clock-out</th>
+      <Th>Hours Worked</Th>
+    </tr>
+
+    <tbody>
+      {% for x in scheduler.all %}
+      <tr>
+        <td>{{x.datetime.date}}</td>
+        <td> {{x.clock_in}} </td>
+        <td>{{x.clock_out}}</td>
+        <td></td>
+      </tr>
+      <tr>
+      </tr>
+      {% endfor %}
+  </table>
+</body>
+
+</html>

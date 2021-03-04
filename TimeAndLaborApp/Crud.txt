@@ -1,0 +1,1 @@
+User.objects.create(fname= "test" , lname= "James", email= "test@gmail.com", password= "11111111")

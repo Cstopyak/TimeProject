@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>Settings</title>
+    <Style>
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #333;
+        }
+
+        li {
+            float: left;
+        }
+
+        li a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        li a:hover:not(.active) {
+            background-color: #111;
+        }
+
+        .active {
+            background-color: #4CAF50;
+        }
+    </Style>
+</head>
+
+<body>
+    <h1> {{loginUser.fname}}, you can edit your profile here.</h1>
+    <ul>
+        <li><a href="/UserDashboard">Home</a></li>
+        <li><a href="/MyBenefits">My Benefits</a></li>
+        <li><a href="/MyReports">Reports</a></li>
+        
+        <li style="float:right"><a class="active" href="/logout"> Logout here</a></li>
+    </ul>
+
+    <form action="/registerProcess" method="post">
+        {% csrf_token %}
+        <p> First Name: <input type="" name="fname" class="form-control" id="" ></p>
+        <p> Last Name: <input type="" name="lname" class="form-control" id=""></p>
+        
+        <p> Email: <input type="" name="email" class="form-control" id="" placeholder="name@example.com"></p>
+        <p> Password: <input type="" name="pass" class="form-control" id=""></p>
+        <p> Confirm Password: <input type="confpass" name="confpass" class="form-control" id=""></p>
+        <p> <input type="submit" value="Update Profile"></p>
+    </form>
+</div>
+</body>
+
+</html>

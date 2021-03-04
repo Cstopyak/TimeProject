@@ -1,0 +1,48 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>New User Registration</title>
+    <style>
+         .Registration{
+            background-color: whitesmoke;
+            
+            width: 400px;
+            margin: 0px auto
+        }
+
+        
+
+    </style>
+</head>
+
+<body>
+    <div class="Registration">
+        
+        <h1> Login Registration</h1>
+        {% if messages %}
+            {% for message in messages %}
+            <p>{{message}}</p>
+            {% endfor %}
+        {% endif %}
+
+        <form action="/registerProcess" method="post">
+            {% csrf_token %}
+            <p> First Name: <input type="" name="fname" class="form-control" id="" ></p>
+            <p> Last Name: <input type="" name="lname" class="form-control" id=""></p>
+            
+            <p> Email: <input type="" name="email" class="form-control" id="" placeholder="name@example.com"></p>
+            <p> Password: <input type="" name="pass" class="form-control" id=""></p>
+            <p> Confirm Password: <input type="confpass" name="confpass" class="form-control" id=""></p>
+            <p> <input type="submit" value="Register"></p>
+        </form>
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Benefits</title>
+</head>
+<style>
+    ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background-color: #333;
+    }
+
+    li {
+        float: left;
+    }
+
+    li a {
+        display: block;
+        color: white;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+    }
+
+    li a:hover:not(.active) {
+        background-color: #111;
+    }
+
+    .active {
+        background-color: #4CAF50;
+    }
+
+    .PTO {
+        width: 239px;
+        background-color: cornflowerblue;
+        display: inline-block;
+    }
+
+
+
+
+    * {
+        box-sizing: border-box;
+    }
+
+    .container-form {
+        width: 650px;
+        border-radius: 5px;
+        border-style: solid;
+        background-color: whitesmoke;
+        padding: 20px;
+    }
+
+    .col-25 {
+        float: left;
+        width: 25%;
+        margin-top: 6px;
+    }
+
+    .col-75 {
+        float: left;
+        width: 75%;
+        margin-top: 6px;
+    }
+
+    .row:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+
+
+
+    input[type=submit] {
+        background-color: rgb(60, 80, 168);
+        color: white;
+        padding: 12px 20px;
+        margin: 0px auto;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        float: center;
+    }
+</style>
+
+<body>
+    <h3>Here is your Summary for your benefits.</h3>
+
+    <div class="Benefits-Header">
+
+        <ul>
+            <li><a href="/UserDashboard">Home</a></li>
+            <li><a href="/MyReports">Reports</a></li>
+            <li><a href="/SettingsPage">Settings</a></li>
+            <li style="float:right"><a class="active" href="/logout"> Logout here</a></li>
+        </ul>
+    </div>
+    <div class="PTO">
+        <p> Vaction Time Used: </p>
+    </div>
+    <div class="PTO">
+        <p> Vaction Time Available: {{loginUser.Pto}} hours</p>
+    </div>
+    <div class="PTO">
+        <p> Sick Time Used</p>
+    </div>
+    <div class="PTO">
+        <p> Sick Time Available</p>
+    </div>
+    <div class="PTO">
+        <p> Total Benefits Available</p>
+    </div>
+
+
+    <form action="/requestTimeOff" method="POST">
+        <div class="container-form">
+            <form action="">
+                {% csrf_token %}
+                <h3> Time Off Request Form</h3>
+                <hr>
+                <div class="row">
+                    <div class="col-25">
+                        <label for="PTO">PTO</label>
+                    </div>
+                    <div class="col-75">
+                        <input type="Integer" id="" name="PtoRequested" placeholder="# of hours requested">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-25">
+                        <label for="DateFrom">Date From</label>
+                    </div>
+                    <div class="col-75">
+                        <input type="date" name="datefrom" id=""></p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-25">
+                        <label for="Dateto">Date To</label>
+                    </div>
+                    <div class="col-75">
+                        <input type="date" name="dateto" id=""></p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-25">
+                        <label for="Description">Description</label>
+                    </div>
+                    <div class="col-75">
+                        <textarea id="" name="description" placeholder="Brief description of time-off (optional)"
+                            style="height:200px"></textarea>
+                    </div>
+                    <br>
+                    <p> <input type="submit" value="request time-off"></p>
+                </div>
+
+            </form>
+        </div>
+        </div>
+</body>
+
+</html>

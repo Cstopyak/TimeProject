@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>Welcome</title>
+    <style>
+
+        .Container-fluid{
+            Height: 100px;
+            background-color: #333;
+        }
+        .form-group {
+            background-color: whitesmoke;
+            width: 800px;
+            margin: 0px auto;
+
+        }
+    </style>
+</head>
+
+<body>
+    <div class="Container-fluid">
+
+        
+    </div>
+
+    <form action="/Login" method="post">
+
+        <div class="form-group">
+            <h2>Welcome, please login.</h2>
+           
+
+            {% csrf_token %}
+            <label for="InputEmail">Email address</label>
+            <input type="email" class="form-control" name="email" id="" aria-describedby="emailHelp">
+            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone
+                else.</small>
+        </div>
+        <div class="form-group">
+            <label for="exampleInputPassword1">Password</label>
+            <input type="password" class="form-control" name="pass" id="pass">
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary">Submit</button>
+            <br>
+            <a href="/registerPage">New User? Please click here</a>
+
+        </div>
+        {% if messages %}
+            {% for message in messages %}
+            <p>{{message}}</p>
+            {% endfor %}
+        {% endif %}
+    </form>
+
+
+
+</body>
+
+</html>
